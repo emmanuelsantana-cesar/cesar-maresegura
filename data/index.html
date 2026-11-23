@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Maré Sergura</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">⛱️</div>
+        <div>
+          <h1>Maré Segura</h1>
+          <p>Informação que protege · SRT</p>
+        </div>
+      </div>
+      <div class="place">
+        <div class="eyebrow">Monitoramento costeiro</div>
+        <h2>Praia de Boa Viagem</h2>
+        <p>Recife · Pernambuco · Brasil &nbsp;|&nbsp; Quiosque 12</p>
+      </div>
+      <div class="top-right">
+        <div class="post-badge"><small>Número do posto</small><strong id="postNumber">07</strong></div>
+        <div class="clock"><strong id="clock">11:27:00</strong><small id="date">Domingo, 15 de novembro</small></div>
+      </div>
+    </header>
+
+    <main class="main-grid">
+      <section class="card risk-card">
+        <div class="card-head">
+          <h3>RISCO DE BANHO</h3><span class="tag">ATENÇÃO</span>
+        </div>
+        <div class="risk-state">
+          <div class="risk-orb" aria-hidden="true"></div>
+          <div><small>CONDIÇÕES DO MAR</small><strong>MODERADO</strong><span>Entre somente após observar as condições
+              e
+              a
+              sinalização local.</span></div>
+        </div>
+        <div class="risk-legend" aria-label="Níveis de risco">
+          <div class="risk-level low">BAIXO</div>
+          <div class="risk-level mid active">MODERADO</div>
+          <div class="risk-level high">ALTO</div>
+        </div>
+        <div class="risk-note"><b>Antes de entrar:</b> verifique correntes, ondas, visibilidade e orientações dos
+          guarda-vidas. A classificação desta tela é ilustrativa.</div>
+        <div class="guard"><span class="dot"></span> Respeite bandeiras e áreas sinalizadas.</div>
+        <div class="card-head">
+          <h3>ORIENTAÇÕES</h3><span class="sub">SEGURANÇA NA PRAIA</span>
+        </div>
+        <div class="safety-points">
+          <div class="safety-point"><span class="check">✓</span><span>Respeite bandeiras, placas e orientações dos
+              guarda-vidas.</span></div>
+          <div class="safety-point"><span class="check">✓</span><span>Não entre no mar sozinho ou após consumir
+              álcool.</span></div>
+          <div class="safety-point"><span class="check">✓</span><span>Mantenha crianças sempre sob supervisão de um
+              adulto.</span></div>
+        </div>
+        <div class="emergency-row">
+          <div class="emergency"><small>Bombeiros · Salvamento</small><b>193</b></div>
+          <div class="emergency"><small>SAMU · Emergência médica</small><b>192</b></div>
+        </div>
+      </section>
+      <section class="card tide-card">
+        <div class="card-head">
+          <h3>MARÉ AGORA</h3><span class="tag">TÁBUA DE MARÉS · DEMO</span>
+        </div>
+        <div class="tide-current"><strong>1,8 <span>m</span></strong>
+          <div class="tide-direction">↗ <b>Subindo</b><span>Altura ilustrativa</span></div>
+        </div>
+        <svg class="tide-chart" viewBox="0 0 620 110" preserveAspectRatio="none" role="img"
+          aria-label="Gráfico ilustrativo da variação da maré">
+          <defs>
+            <linearGradient id="tideFill" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#40d2ee" stop-opacity=".3" />
+              <stop offset="1" stop-color="#40d2ee" stop-opacity="0" />
+            </linearGradient>
+          </defs>
+          <path d="M0 81 C60 77 86 20 158 18 S250 91 324 87 S410 25 470 27 S555 85 620 64 L620 110H0Z"
+            fill="url(#tideFill)" />
+          <path d="M0 81 C60 77 86 20 158 18 S250 91 324 87 S410 25 470 27 S555 85 620 64" fill="none" stroke="#52d9f2"
+            stroke-width="3" />
+          <path d="M0 53H620" stroke="#9bd7e7" stroke-opacity=".3" stroke-dasharray="5 7" />
+          <circle cx="385" cy="48" r="6" fill="#e9fbff" stroke="#42d1ed" stroke-width="3" />
+          <g fill="#88afc1" font-size="10"><text x="0" y="105">06h</text><text x="195" y="105">10h</text><text x="390"
+              y="105">14h</text><text x="590" y="105">18h</text></g>
+        </svg>
+        <div class="tide-events">
+          <div class="event"><small>Próxima maré alta</small><b>08:42</b><span>2,1 m · exemplo</span></div>
+          <div class="event"><small>Maré baixa</small><b>14:51</b><span>0,4 m · exemplo</span></div>
+          <div class="event"><small>Maré alta</small><b>21:05</b><span>2,0 m · exemplo</span></div>
+        </div>
+      </section>
+      <section class="card weather-card">
+        <div class="card-head">
+          <h3>PREVISÃO DO TEMPO</h3><span class="sub">HOJE · EXEMPLO</span>
+        </div>
+        <div class="weather-now">
+          <div class="weather-icon" aria-hidden="true">🌤️</div>
+          <div>
+            <div class="temperature">29<span>°C</span></div>
+            <div class="weather-desc">Parcialmente nublado</div>
+          </div>
+        </div>
+        <div class="weather-stats">
+          <div class="stat"><small>Vento</small><b>18 km/h</b><span>Direção a integrar</span></div>
+          <div class="stat"><small>Umidade</small><b>74%</b><span>Valor ilustrativo</span></div>
+          <div class="stat"><small>Chance de chuva</small><b>20%</b><span>Valor ilustrativo</span></div>
+          <div class="stat"><small>Sensação térmica</small><b>31 °C</b><span>Valor ilustrativo</span></div>
+        </div>
+      </section>
+      <section class="card sun-card">
+        <div class="card-head">
+          <h3>INCIDÊNCIA SOLAR</h3><span class="tag">PROTEJA-SE</span>
+        </div>
+        <div class="uv-row"><span>Índice UV</span><strong>9 · MUITO ALTO</strong></div>
+        <div class="uv-bar"><span class="uv-pointer"></span></div>
+        <div class="sun-times">
+          <div class="sun-time"><small>☀ Nascer do sol</small><b>05:00</b></div>
+          <div class="sun-time"><small>🌅 Pôr do sol</small><b>17:20</b></div>
+        </div>
+        <div class="sun-advice">Use protetor solar, reaplique conforme as instruções, procure sombra e use proteção
+          adequada. Horários e índice ilustrativos.</div>
+      </section>
+      <section class="card moon-card">
+        <div class="card-head">
+          <h3>FASES DA LUA</h3><span class="sub">CALENDÁRIO LUNAR</span>
+        </div>
+        <div class="moon-current">
+          <div class="moon-disc" aria-hidden="true"></div>
+          <div><b>Lua crescente</b><small>Iluminação ilustrativa: 78%<br>Fase a atualizar por calendário
+              astronômico.</small></div>
+        </div>
+        <div class="moon-phases">
+          <div class="phase"><i>●</i><small>Nova</small></div>
+          <div class="phase"><i>◔</i><small>Crescente</small></div>
+          <div class="phase"><i>○</i><small>Cheia</small></div>
+          <div class="phase"><i>◑</i><small>Minguante</small></div>
+        </div>
+      </section>
+      <section class="card nearby-card">
+        <div class="card-head">
+          <h3>POSTOS DA ORLA</h3><span class="sub">BUSQUE OUTROS PONTOS DE BANHO</span>
+        </div>
+        <nav class="nearby-nav">
+          <button class="arrow" id="prevPost" aria-label="Postos anteriores">‹</button>
+          <div class="near-card"><small id="near1Name">Quiosque 11</small><b id="near1Dist">1,2 km</b><span>Posto
+              06</span></div>
+          <div class="near-card"><small id="near2Name">Quiosque 13</small><b id="near2Dist">0,8 km</b><span>Posto
+              08</span></div>
+          <button class="arrow" id="nextPost" aria-label="Próximos postos">›</button>
+        </nav>
+
+      </section>
+    </main>
+  </div>
+
+
+</body>
+<script src="script.js"></script>
+
+</html>
