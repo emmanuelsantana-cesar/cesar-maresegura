@@ -1,0 +1,126 @@
+.topbar {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr 1.15fr;
+  align-items: center;
+  gap: 22px;
+  min-height: 88px;
+  padding: 0 4px 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+}
+
+.brandMark {
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  border-radius: 17px;
+  border: 1px solid rgba(88, 215, 246, .35);
+  background: linear-gradient(145deg, rgba(25, 114, 150, .5), rgba(5, 30, 48, .92));
+  box-shadow: 0 0 24px rgba(56, 199, 235, .11), inset 0 0 16px rgba(77, 202, 234, .12);
+  font-size: 30px;
+}
+
+.brand h1 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 600;
+  font-size: clamp(28px, 2.1vw, 39px);
+  letter-spacing: -.8px;
+  color: #e3faff;
+  text-shadow: 0 0 12px rgba(75, 208, 245, .62);
+}
+
+.brand p {
+  margin: 4px 0 0;
+  color: #86adbf;
+  font-size: 11px;
+  letter-spacing: .19em;
+  text-transform: uppercase;
+}
+
+.place {
+  justify-self: center;
+  text-align: center;
+  min-width: 0;
+}
+
+.eyebrow {
+  color: var(--cyan);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+
+.place h2 {
+  margin: 5px 0 2px;
+  font-size: 21px;
+  letter-spacing: .01em;
+}
+
+.place p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.topRight {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 23px;
+}
+
+.postBadge {
+  min-width: 105px;
+  padding: 8px 15px;
+  border: 1px solid rgba(87, 210, 239, .3);
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(18, 78, 108, .75), rgba(7, 36, 57, .9));
+  text-align: center;
+}
+
+.postBadge small {
+  display: block;
+  color: #96bacb;
+  font-size: 9px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.postBadge strong {
+  display: block;
+  margin-top: 2px;
+  font-size: 25px;
+  line-height: 1.1;
+  text-shadow: 0 0 12px rgba(78, 213, 242, .42);
+}
+
+.clock {
+  text-align: right;
+  min-width: 135px;
+}
+
+.clock strong {
+  display: block;
+  font-size: 27px;
+  font-weight: 650;
+  letter-spacing: .04em;
+  font-variant-numeric: tabular-nums;
+}
+
+.clock small {
+  color: var(--muted);
+  font-size: 11px;
+  text-transform: capitalize;
+}
