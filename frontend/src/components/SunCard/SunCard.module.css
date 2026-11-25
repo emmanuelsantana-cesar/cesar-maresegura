@@ -1,0 +1,74 @@
+.uvRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 7px 0 5px;
+}
+
+.uvRow span {
+  color: #a9c8d7;
+  font-size: 12px;
+}
+
+.uvRow strong {
+  color: #ffcf6b;
+  font-size: 24px;
+}
+
+.uvBar {
+  height: 11px;
+  margin: 10px 0 17px;
+  border-radius: 99px;
+  background: linear-gradient(90deg, #49d99d 0 18%, #e7d34c 18% 36%, #ff9d36 36% 56%, #f35c54 56% 76%, #a56be9 76%);
+  position: relative;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, .4);
+}
+
+/* marcador do índice atual (a posição vem do componente) */
+.uvPointer {
+  position: absolute;
+  top: -5px;
+  width: 3px;
+  height: 21px;
+  background: #f5fbff;
+  border-radius: 4px;
+  box-shadow: 0 0 8px #fff;
+}
+
+.times {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.time {
+  padding: 13px 12px;
+  border: 1px solid rgba(79, 169, 208, .16);
+  border-radius: 10px;
+  background: rgba(5, 31, 50, .6);
+}
+
+.time small {
+  display: block;
+  color: #93b5c7;
+  font-size: 10px;
+}
+
+.time b {
+  display: block;
+  margin-top: 5px;
+  font-size: 23px;
+}
+
+.advice {
+  margin-top: 14px;
+  padding: 11px 12px;
+  border-radius: 9px;
+  background: rgba(255, 185, 58, .07);
+  border: 1px solid rgba(255, 185, 58, .13);
+  color: #e6d3a9;
+  font-size: 10px;
+  line-height: 1.5;
+}

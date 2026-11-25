@@ -1,0 +1,41 @@
+.grid {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: minmax(0, 1.14fr) minmax(0, .86fr);
+  gap: 18px;
+}
+
+/* posição de cada card na grade */
+.risk {
+  grid-column: 1 / -1;
+  grid-row: 1;
+}
+
+.tide {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.weather {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.sun {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.moon {
+  grid-column: 4;
+  grid-row: 2;
+}
+
+.nearby {
+  grid-column: 1 / -1;
+  grid-row: 3;
+}

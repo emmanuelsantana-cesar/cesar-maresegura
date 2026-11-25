@@ -3,3 +3,9 @@ secrets.h
 
 # Build
 build/
+
+# Frontend
+frontend/node_modules/
+
+# Gerado pelo "npm run build" do frontend (vai para a placa pelo Upload LittleFS)
+data/

@@ -107,6 +107,9 @@ void handleRoot() {
     server.send(500, "text/plain", "index.html nao encontrado");
     return;
   }
+  // O index.html aponta para os arquivos do build atual (nomes mudam a cada build),
+  // então o navegador nunca deve usar uma cópia antiga dele.
+  server.sendHeader("Cache-Control", "no-cache");
   server.streamFile(f, "text/html");
   f.close();
 }
@@ -146,7 +149,10 @@ void setup() {
 
   server.on("/", handleRoot);
   server.on("/api/status", handleStatus);
-  server.serveStatic("/", LittleFS, "/");  // entrega style.css e script.js
+  // JS e CSS gerados pelo build do frontend (pasta data/assets, comprimidos em .gz).
+  // O nome muda a cada build, então o navegador pode guardar em cache por 1 ano.
+  server.serveStatic("/assets", LittleFS, "/assets", "max-age=31536000, immutable");
+  server.serveStatic("/", LittleFS, "/");
   server.begin();
 }
 

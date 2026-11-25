@@ -1,0 +1,59 @@
+.card {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  padding: 22px 23px;
+  border: 1px solid var(--line);
+  border-radius: 19px;
+  background: linear-gradient(145deg, rgba(13, 51, 77, .94), rgba(5, 27, 44, .96));
+  box-shadow: var(--shadow), inset 0 1px rgba(255, 255, 255, .035);
+  overflow: hidden;
+}
+
+/* reflexo suave por cima do card */
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(120deg, rgba(255, 255, 255, .035), transparent 27%, transparent 78%, rgba(57, 190, 224, .025));
+}
+
+.head {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.head h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 750;
+  letter-spacing: .035em;
+}
+
+.sub {
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.tag {
+  padding: 5px 8px;
+  border-radius: 7px;
+  border: 1px solid rgba(92, 224, 245, .24);
+  background: rgba(54, 166, 201, .1);
+  color: #9deeff;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
