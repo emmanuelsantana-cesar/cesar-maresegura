@@ -1,10 +1,6 @@
 // Dados de demonstração do painel.
 // Cada bloco aqui vai ser trocado por dados reais (API da placa ou serviços externos).
 
-import type { NivelRisco } from '../services/api'
-
-export type { NivelRisco }
-
 export const local = {
   praia: 'Praia de Boa Viagem',
   cidade: 'Recife · Pernambuco · Brasil',
@@ -16,8 +12,6 @@ export const relogio = {
   hora: '11:27:00',
   data: 'Domingo, 15 de novembro',
 }
-
-export const risco: NivelRisco = 'MODERADO'
 
 export const mare = {
   altura: '1,8',
