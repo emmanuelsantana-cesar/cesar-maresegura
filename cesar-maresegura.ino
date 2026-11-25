@@ -3,7 +3,10 @@
 // Abra o Monitor Serial em 115200.
 //
 // - Servidor web: entrega o painel (pasta data) e a API /api/status
-// - Botões: SELECT alterna o risco MODERADO (amarela) <-> ALTO (vermelha)
+// - Lâmpadas: mostram o risco do posto deste totem
+//     MODERADO = amarela, ALTO = vermelha, BAIXO = apagadas
+// - Risco: virá de uma API. Enquanto ela não existe, dá para simular
+//   digitando BAIXO, MODERADO ou ALTO no Monitor Serial.
 
 #include <WiFi.h>
 #include <WebServer.h>
@@ -51,13 +54,45 @@ int ultimaLeitura[NUM_BOTOES];
 unsigned long ultimaMudanca[NUM_BOTOES];
 const unsigned long DEBOUNCE_MS = 30;
 
-bool riscoAlto = false;
+// ---------------------------------------------------------------
+// Risco do posto deste totem
+// ---------------------------------------------------------------
+enum Risco { BAIXO, MODERADO, ALTO };
+const char* NOMES_RISCO[] = {"BAIXO", "MODERADO", "ALTO"};
+
+// Valor de demonstração até a API de risco existir.
+Risco risco = MODERADO;
 
 void aplicarRisco() {
-  // Só uma lâmpada por vez: amarela ou vermelha, nunca verde.
-  digitalWrite(PIN_RELE_VERMELHA, riscoAlto ? RELE_LIGA : RELE_DESLIGA);
-  digitalWrite(PIN_RELE_AMARELA,  riscoAlto ? RELE_DESLIGA : RELE_LIGA);
-  Serial.println(riscoAlto ? "Risco: ALTO (vermelha)" : "Risco: MODERADO (amarela)");
+  // Só uma lâmpada por vez. Não há lâmpada verde: no BAIXO ficam apagadas.
+  digitalWrite(PIN_RELE_VERMELHA, risco == ALTO     ? RELE_LIGA : RELE_DESLIGA);
+  digitalWrite(PIN_RELE_AMARELA,  risco == MODERADO ? RELE_LIGA : RELE_DESLIGA);
+  Serial.print("Risco: ");
+  Serial.println(NOMES_RISCO[risco]);
+}
+
+void definirRisco(Risco novo) {
+  if (novo == risco) return;
+  risco = novo;
+  aplicarRisco();
+}
+
+// Simula a resposta da API: digite BAIXO, MODERADO ou ALTO no Monitor Serial.
+// Quando a API existir, quem chama definirRisco() é o código que busca nela.
+void lerComandoSerial() {
+  if (!Serial.available()) return;
+  String comando = Serial.readStringUntil('\n');
+  comando.trim();
+  comando.toUpperCase();
+  if (comando.length() == 0) return;
+
+  for (int r = BAIXO; r <= ALTO; r++) {
+    if (comando == NOMES_RISCO[r]) {
+      definirRisco((Risco)r);
+      return;
+    }
+  }
+  Serial.println("Comando desconhecido. Use: BAIXO, MODERADO ou ALTO");
 }
 
 void configurarPinos() {
@@ -87,10 +122,6 @@ void lerBotoes() {
       if (leitura == LOW) {
         Serial.print("Botao apertado: ");
         Serial.println(nomes[i]);
-        if (pinos[i] == PIN_SELECT) {
-          riscoAlto = !riscoAlto;
-          aplicarRisco();
-        }
       }
     }
   }
@@ -117,7 +148,7 @@ void handleRoot() {
 // A "API" da placa: devolve um JSON
 void handleStatus() {
   String json = "{\"uptime\":" + String(millis() / 1000) +
-                ",\"risco\":\"" + String(riscoAlto ? "ALTO" : "MODERADO") + "\"}";
+                ",\"risco\":\"" + String(NOMES_RISCO[risco]) + "\"}";
   server.send(200, "application/json", json);
 }
 
@@ -158,5 +189,6 @@ void setup() {
 
 void loop() {
   lerBotoes();
+  lerComandoSerial();
   server.handleClient();
 }

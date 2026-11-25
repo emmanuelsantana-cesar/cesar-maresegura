@@ -1,6 +1,7 @@
 import clsx from 'clsx'
 import { Card, CardHeader } from '../Card/Card'
-import type { NivelRisco } from '../../mocks/painel'
+import type { NivelRisco } from '../../services/api'
+import type { Conexao } from '../../hooks/useStatus'
 import styles from './RiskCard.module.css'
 
 const niveis: { nivel: NivelRisco; classe: string }[] = [
@@ -9,6 +10,40 @@ const niveis: { nivel: NivelRisco; classe: string }[] = [
   { nivel: 'ALTO', classe: styles.high },
 ]
 
+// Texto e cor do card para cada situação.
+const visual = {
+  BAIXO: {
+    tema: styles.temaBaixo,
+    tag: 'FAVORÁVEL',
+    titulo: 'BAIXO',
+    texto: 'Condições favoráveis. Mesmo assim, respeite a sinalização local.',
+  },
+  MODERADO: {
+    tema: styles.temaModerado,
+    tag: 'ATENÇÃO',
+    titulo: 'MODERADO',
+    texto: 'Entre somente após observar as condições e a sinalização local.',
+  },
+  ALTO: {
+    tema: styles.temaAlto,
+    tag: 'PERIGO',
+    titulo: 'ALTO',
+    texto: 'Evite entrar no mar. Siga as orientações dos guarda-vidas.',
+  },
+  conectando: {
+    tema: styles.temaSemDados,
+    tag: 'AGUARDE',
+    titulo: 'CONECTANDO…',
+    texto: 'Buscando as condições do mar na placa.',
+  },
+  offline: {
+    tema: styles.temaSemDados,
+    tag: 'SEM DADOS',
+    titulo: 'SEM CONEXÃO',
+    texto: 'Não foi possível obter o risco atual. Consulte os guarda-vidas antes de entrar.',
+  },
+}
+
 const orientacoes = [
   'Respeite bandeiras, placas e orientações dos guarda-vidas.',
   'Não entre no mar sozinho ou após consumir álcool.',
@@ -16,21 +51,24 @@ const orientacoes = [
 ]
 
 type RiskCardProps = {
-  risco: NivelRisco
+  risco: NivelRisco | null // null = ainda sem dado confiável da placa
+  conexao?: Conexao
   className?: string
 }
 
-export default function RiskCard({ risco, className }: RiskCardProps) {
-  return (
-    <Card className={clsx(styles.riskCard, className)}>
-      <CardHeader title="RISCO DE BANHO" tag="ATENÇÃO" />
+export default function RiskCard({ risco, conexao = 'online', className }: RiskCardProps) {
+  const v = risco ? visual[risco] : visual[conexao === 'conectando' ? 'conectando' : 'offline']
 
-      <div className={styles.state}>
+  return (
+    <Card className={clsx(styles.riskCard, v.tema, className)}>
+      <CardHeader title="RISCO DE BANHO" tag={v.tag} />
+
+      <div className={styles.state} role="status" aria-live="polite">
         <div className={styles.orb} aria-hidden="true" />
         <div>
           <small>CONDIÇÕES DO MAR</small>
-          <strong>{risco}</strong>
-          <span>Entre somente após observar as condições e a sinalização local.</span>
+          <strong>{v.titulo}</strong>
+          <span>{v.texto}</span>
         </div>
       </div>
 
