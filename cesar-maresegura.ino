@@ -3,8 +3,16 @@
 #include <ESPmDNS.h>
 #include <LittleFS.h>
 
-const char* ssid     = "CLARO_F63D53";
-const char* password = "JYpktqa4gm";
+// As credenciais do Wi-Fi ficam em secrets.h, que NÃO vai para o git.
+// Se ele não existir, copie secrets.example.h para secrets.h e preencha.
+#if __has_include("secrets.h")
+#include "secrets.h"
+#else
+#error "Falta o arquivo secrets.h: copie secrets.example.h para secrets.h e preencha com a sua rede Wi-Fi."
+#endif
+
+const char* ssid     = WIFI_SSID;
+const char* password = WIFI_PASSWORD;
 
 WebServer server(80);
 
