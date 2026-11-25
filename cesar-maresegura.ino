@@ -29,7 +29,7 @@ WebServer server(80);
 const int PIN_ESQUERDA = 33;
 const int PIN_DIREITA  = 32;
 const int PIN_SELECT   = 25;
-const int PIN_HOME     = 35;
+const int PIN_HOME     = 14;  // GPIO 35 não tem pull-up interno e ficava "apertado" sozinho
 
 const int PIN_RELE_VERMELHA = 26;  // IN1 do módulo relé
 const int PIN_RELE_AMARELA  = 27;  // IN2 do módulo relé
