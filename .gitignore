@@ -1,0 +1,5 @@
+# Credenciais locais de cada pessoa (copie de secrets.example.h)
+secrets.h
+
+# Build
+build/
