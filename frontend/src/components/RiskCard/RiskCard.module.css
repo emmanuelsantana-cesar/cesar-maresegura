@@ -1,6 +1,81 @@
+/* ---------------------------------------------------------------
+   Temas por nível de risco.
+   O card inteiro usa estas variáveis; para mudar a cor de um nível,
+   mexa só aqui.
+   --------------------------------------------------------------- */
+.temaModerado {
+  --risco-rgb: 255, 181, 45;
+  --risco-brilho-rgb: 255, 174, 38;
+  --risco-fundo: rgba(47, 44, 28, .93);
+  --orb-1: #ffe68d;
+  --orb-2: #ffbf36;
+  --orb-3: #e48a12;
+  --orb-4: #9b5309;
+  --orb-brilho-1: rgba(255, 180, 39, .9);
+  --orb-brilho-2: rgba(255, 164, 22, .34);
+  --orb-sombra: rgba(111, 52, 0, .28);
+  --risco-rotulo: #ffd77d;
+  --risco-titulo: #fff1c6;
+  --risco-nota: #e8d6ad;
+  --risco-nota-destaque: #ffe09b;
+}
+
+.temaAlto {
+  --risco-rgb: 255, 89, 99;
+  --risco-brilho-rgb: 255, 80, 90;
+  --risco-fundo: rgba(52, 26, 32, .93);
+  --orb-1: #ffc2c6;
+  --orb-2: #ff6b74;
+  --orb-3: #d93442;
+  --orb-4: #7d1019;
+  --orb-brilho-1: rgba(255, 89, 99, .9);
+  --orb-brilho-2: rgba(255, 60, 75, .34);
+  --orb-sombra: rgba(100, 0, 10, .3);
+  --risco-rotulo: #ff9ea4;
+  --risco-titulo: #ffe3e5;
+  --risco-nota: #f0c9cc;
+  --risco-nota-destaque: #ffb3b8;
+}
+
+.temaBaixo {
+  --risco-rgb: 66, 221, 160;
+  --risco-brilho-rgb: 60, 210, 150;
+  --risco-fundo: rgba(22, 48, 42, .93);
+  --orb-1: #c8ffe6;
+  --orb-2: #5ee8b0;
+  --orb-3: #23b07a;
+  --orb-4: #0d5c3e;
+  --orb-brilho-1: rgba(66, 221, 160, .75);
+  --orb-brilho-2: rgba(40, 200, 140, .3);
+  --orb-sombra: rgba(0, 60, 35, .28);
+  --risco-rotulo: #8ff0c6;
+  --risco-titulo: #e2fff2;
+  --risco-nota: #c4e8d8;
+  --risco-nota-destaque: #9ff3cf;
+}
+
+/* conectando ou sem conexão: neutro, sem cor de risco */
+.temaSemDados {
+  --risco-rgb: 145, 178, 196;
+  --risco-brilho-rgb: 145, 178, 196;
+  --risco-fundo: rgba(30, 42, 52, .93);
+  --orb-1: #e5eef3;
+  --orb-2: #a9bfcc;
+  --orb-3: #6d8797;
+  --orb-4: #34485a;
+  --orb-brilho-1: rgba(145, 178, 196, .35);
+  --orb-brilho-2: rgba(145, 178, 196, .12);
+  --orb-sombra: rgba(10, 20, 30, .3);
+  --risco-rotulo: #b8cdd8;
+  --risco-titulo: #e8f1f6;
+  --risco-nota: #c9d6dd;
+  --risco-nota-destaque: #e1eaef;
+}
+
 .riskCard {
-  background: radial-gradient(ellipse at 50% 28%, rgba(255, 174, 38, .12), transparent 48%), linear-gradient(150deg, rgba(47, 44, 28, .93), rgba(7, 30, 47, .97) 70%);
-  border-color: rgba(255, 181, 45, .28);
+  background: radial-gradient(ellipse at 50% 28%, rgba(var(--risco-brilho-rgb), .12), transparent 48%), linear-gradient(150deg, var(--risco-fundo), rgba(7, 30, 47, .97) 70%);
+  border-color: rgba(var(--risco-rgb), .28);
+  transition: border-color .4s;
 }
 
 .state {
@@ -15,13 +90,13 @@
   height: 78px;
   flex: 0 0 auto;
   border-radius: 50%;
-  background: radial-gradient(circle at 34% 28%, #ffe68d 0%, #ffbf36 37%, #e48a12 76%, #9b5309 100%);
-  box-shadow: 0 0 15px rgba(255, 180, 39, .9), 0 0 45px rgba(255, 164, 22, .34), inset -7px -8px 12px rgba(111, 52, 0, .28);
+  background: radial-gradient(circle at 34% 28%, var(--orb-1) 0%, var(--orb-2) 37%, var(--orb-3) 76%, var(--orb-4) 100%);
+  box-shadow: 0 0 15px var(--orb-brilho-1), 0 0 45px var(--orb-brilho-2), inset -7px -8px 12px var(--orb-sombra);
 }
 
 .state small {
   display: block;
-  color: #ffd77d;
+  color: var(--risco-rotulo);
   font-size: 12px;
   font-weight: 850;
   letter-spacing: .16em;
@@ -30,7 +105,7 @@
 .state strong {
   display: block;
   margin: 3px 0;
-  color: #fff1c6;
+  color: var(--risco-titulo);
   font-size: 35px;
   line-height: 1.05;
   letter-spacing: .02em;
@@ -88,23 +163,23 @@
 
 .active {
   color: #fff;
-  border-color: rgba(255, 181, 45, .52);
-  background: rgba(255, 181, 45, .1);
-  box-shadow: 0 0 18px rgba(255, 181, 45, .07);
+  border-color: rgba(var(--risco-rgb), .52);
+  background: rgba(var(--risco-rgb), .1);
+  box-shadow: 0 0 18px rgba(var(--risco-rgb), .07);
 }
 
 .note {
   padding: 12px 13px;
   border-radius: 10px;
-  background: rgba(255, 181, 45, .075);
-  border: 1px solid rgba(255, 181, 45, .17);
-  color: #e8d6ad;
+  background: rgba(var(--risco-rgb), .075);
+  border: 1px solid rgba(var(--risco-rgb), .17);
+  color: var(--risco-nota);
   font-size: 11px;
   line-height: 1.5;
 }
 
 .note b {
-  color: #ffe09b;
+  color: var(--risco-nota-destaque);
 }
 
 .guard {
