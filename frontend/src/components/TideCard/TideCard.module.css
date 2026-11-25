@@ -1,0 +1,71 @@
+.current {
+  display: flex;
+  align-items: flex-end;
+  gap: 13px;
+  margin: 6px 0 0;
+}
+
+.current strong {
+  font-size: 61px;
+  line-height: .95;
+  letter-spacing: -.05em;
+  font-weight: 650;
+  text-shadow: 0 0 18px rgba(73, 213, 242, .23);
+}
+
+.current strong span {
+  font-size: 22px;
+  color: #b9d7e5;
+  letter-spacing: 0;
+}
+
+.direction {
+  padding-bottom: 5px;
+  color: #9ae8f7;
+  font-size: 13px;
+}
+
+.direction b {
+  display: block;
+  color: #e9faff;
+  font-size: 16px;
+}
+
+.chart {
+  width: 100%;
+  height: 104px;
+  margin: 12px 0 8px;
+  overflow: visible;
+}
+
+.events {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 9px;
+  margin-top: 3px;
+}
+
+.event {
+  padding: 12px 11px;
+  border-radius: 10px;
+  border: 1px solid rgba(79, 169, 208, .19);
+  background: rgba(5, 31, 50, .65);
+}
+
+.event small {
+  display: block;
+  color: #9ab9c9;
+  font-size: 10px;
+}
+
+.event b {
+  display: block;
+  margin: 5px 0 2px;
+  font-size: 20px;
+  font-variant-numeric: tabular-nums;
+}
+
+.event span {
+  color: #84b5c9;
+  font-size: 10px;
+}
